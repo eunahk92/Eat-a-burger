@@ -1,7 +1,9 @@
 <li class="rounded-lg">
-    {{burger_name}}
+    #{{id}} | {{burger_name}}
+
+    <button class="delete-burger btn btn-warning btn-sm float-right" data-id="{{this.id}}">x</button>
 
     {{#unless devoured}}
-        <button type="button" class="change-devoured btn btn-warning btn-sm float-right" data-id="{{id}}" data-devouredstate="{{devoured}}">DEVOUR ME!</button>
+        <button type="button" class="change-devoured btn btn-warning btn-sm float-right mr-2" data-id="{{id}}" data-devouredstate="{{devoured}}">DEVOUR ME!</button>    
     {{/unless}}
 </li>
