@@ -4,7 +4,7 @@ const mysql = require("mysql");
 const orm = require("./config/orm");
 const routes = require("./controllers/burgers_controller");
 
-let PORT = process.env.PORT;
+let PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// app.use(routes);
+app.use(routes);
 
 app.listen(PORT, function() {
   console.log(`App now listening at localhost:${PORT}`);
