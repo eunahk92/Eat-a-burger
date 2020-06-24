@@ -16,16 +16,16 @@ printQuMarks = num => {
 
 const orm = {
   all(table) {
-    let queryString = "SELECT * FROM ??";
-    return connection.query(queryString, [table]);
+    let queryString = `SELECT * FROM ${table}`;
+    return connection.query(queryString);
   },
   insert(table, cols, vals) {
-    let queryString = `INSERT INTO ${table} (${cols.join(", ")}) VALUES (${printQuMarks(vals.length)})`;
+    let queryString = `INSERT INTO ${table} (${cols.join(", ")}) VALUES (${printQuMarks(cols.length)})`;
     return connection.query(queryString, vals);
   },
-  update(table, setCol, newVal, condition) {
-    let queryString = `UPDATE ${table} SET ${setCol} = ${newVal} WHERE ${condition}`;
-    return connection.query(queryString);
+  update(table, newDataObj, condition) {
+    let queryString = `UPDATE ${table} SET ? WHERE ?`;
+    return connection.query(queryString, [newDataObj, condition]);
   },
   delete(table, condition) {
     let queryString = `DELETE FROM ${table} WHERE ${condition}`;
