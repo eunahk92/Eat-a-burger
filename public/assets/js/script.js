@@ -1,7 +1,6 @@
 $(function() {
     $(".change-devoured").on("click", function(event) {
         let id = $(this).data("id");
-        // let devoured = $(this).data("devouredstate");
         
         let newDevouredState = {
             devoured: 1
@@ -11,13 +10,13 @@ $(function() {
             type: "PUT",
             data: newDevouredState
         }).then(() => {
-            console.log("Burger has been devoured.");
+            console.log(`Burger #${id} has been devoured.`);
             location.reload();
         });
     });
 
-    $(".burger-form").on("submit", e => {
-        e.preventDefault();
+    $(".burger-form").on("submit", function(event) {
+        event.preventDefault();
         burgerEntry = $("#burger").val().trim();
         if (burgerEntry.length < 1) {
             return;
@@ -32,6 +31,17 @@ $(function() {
             data: newBurger
         }).then(() => {
             console.log("New burger has been added.");
+            location.reload();
+        });
+    });
+
+    $(".delete-burger").on("click", function(event) {
+        let id = $(this).data("id");
+
+        $.ajax("/api/burgers/" + id, {
+            type: "DELETE"
+        }).then(() => {
+            console.log(`Burger #${id} has been deleted.`);
             location.reload();
         });
     });
