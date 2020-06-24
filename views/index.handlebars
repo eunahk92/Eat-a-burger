@@ -6,7 +6,7 @@
 </div>
 
 <div class="container-md mx-auto">
-    <form class="mx-auto">
+    <form class="mx-auto burger-form">
         <label for="burger">Please enter a delicious burger:</label>
         <div class="form-group mx-auto">
             <textarea type="text" class="form-control" id="burger" name="burger_name" placeholder="Big mac....Big Mac....I need a double cheese burger and hold the lettuce don't be frontin son no seeds on the bun we be up in this drive through order for 2 I'm cravin a number 9 like my shoe I need some chicken up in here in this hizzle fo rizzle my nizzle extra salt on the frizzle doctor peper my brotha another for your mother double double super size and DON'T FORGET THE FRIES." rows="3"></textarea>
@@ -16,17 +16,17 @@
 
 </div>
 
-<div class="container-md">
+<div class="row container-md mt-4 mx-auto">
     <div class="col-md-6">
         <ul>
-            {{#each burger}}
+            {{#each burgers}}
                 {{#unless devoured}}
-                    {{> burgers/burger-block devoured=true}}
+                    {{> burgers/burger-block}}
                 {{/unless}}
             {{/each}}
         </ul>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" id="devouredCol">
         <ul>
             {{#each burgers}}
                 {{#if devoured}}

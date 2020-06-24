@@ -1,7 +1,7 @@
-<li class="p-3">
+<li class="rounded-lg">
     {{burger_name}}
 
-    <button type="button" class="btn btn-outline-warning btn-sm float-right" data-id="{{id}}">
-        {{#if devoured}} DEVOUR ME!{{/if}}
-    </button>
+    {{#unless devoured}}
+        <button type="button" class="change-devoured btn btn-warning btn-sm float-right" data-id="{{id}}" data-devouredstate="{{devoured}}">DEVOUR ME!</button>
+    {{/unless}}
 </li>
