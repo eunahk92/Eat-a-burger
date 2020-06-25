@@ -2,7 +2,7 @@
 Eat-A-Burger! is a restaurant app using MySQL, Node, Express, Handlebars and ORM that lets users input the names of burgers they'd like to eat.
 
 ## Link to deployed application on Heroku
-[Eat-A-Burger!](https://hidden-scrubland-09098.herokuapp.com/)
+[Eat-A-Burger!](https://gentle-refuge-13265.herokuapp.com/)
 
 #### Directory structure
 ```
