@@ -17,10 +17,11 @@ $(function() {
 
     $(".burger-form").on("submit", function(event) {
         event.preventDefault();
-        burgerEntry = $("#burger").val().trim();
+        let burgerEntry = $("#burger").val().trim();
         if (burgerEntry.length < 1) {
             return;
         }
+        burgerEntry = capitalizeWords(burgerEntry);
         let newBurger = {
             burger_name: burgerEntry,
             devoured: 0
@@ -47,3 +48,5 @@ $(function() {
     });
 });
 
+capitalizeWords = (str) => str.replace(/\w\S*/g, 
+    txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
