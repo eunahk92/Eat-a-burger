@@ -1,9 +1,12 @@
-<li class="rounded-lg">
+<li class="rounded-lg overflow-auto">
     #{{id}} | {{burger_name}}
 
-    <button class="delete-burger btn btn-warning btn-sm float-right" data-id="{{this.id}}">x</button>
-
+    {{#if devoured}}
+        <button class="delete-burger btn btn-warning btn-sm float-right" data-id="{{this.id}}">x</button><br>
+    {{/if}}
+    
     {{#unless devoured}}
-        <button type="button" class="change-devoured btn btn-warning btn-sm float-right mr-2" data-id="{{id}}" data-devouredstate="{{devoured}}">DEVOUR ME!</button>    
+    <input type='text' class='edit' style='display: none;'>
+        <button type="button" class="change-devoured btn btn-outline-danger btn-sm" data-id="{{id}}" data-devouredstate="{{devoured}}">EAT</button>  
     {{/unless}}
 </li>
