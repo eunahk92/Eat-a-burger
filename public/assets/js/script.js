@@ -1,12 +1,11 @@
 $(function() {
     $(".change-devoured").on("click", function(event) {
         let id = $(this).data("id");
-        
         let newDevouredState = {
             devoured: 1
         }
 
-        $.ajax("/api/burgers/" + id, {
+        $.ajax(`/api/burgers/${id}`, {
             type: "PUT",
             data: newDevouredState
         }).then(() => {
@@ -18,10 +17,10 @@ $(function() {
     $(".burger-form").on("submit", function(event) {
         event.preventDefault();
         let burgerEntry = $("#burger").val().trim();
+        burgerEntry = capitalizeWords(burgerEntry);
         if (burgerEntry.length < 1) {
             return;
         }
-        burgerEntry = capitalizeWords(burgerEntry);
         let newBurger = {
             burger_name: burgerEntry,
             devoured: 0
@@ -39,7 +38,7 @@ $(function() {
     $(".delete-burger").on("click", function(event) {
         let id = $(this).data("id");
 
-        $.ajax("/api/burgers/" + id, {
+        $.ajax(`/api/burgers/${id}`, {
             type: "DELETE"
         }).then(() => {
             console.log(`Burger #${id} has been deleted.`);
@@ -48,5 +47,5 @@ $(function() {
     });
 });
 
-capitalizeWords = (str) => str.replace(/\w\S*/g, 
+capitalizeWords = str => str.replace(/\w\S*/g, 
     txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());

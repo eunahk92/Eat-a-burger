@@ -13,29 +13,19 @@ router.get("/", (req, res) => {
 });
 
 router.post("/api/burgers", (req, res) => {
-    burger.insert(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured])
-    .then(result => res.json({ id: result.insertId}))
+    burger.insert(req.body).then(result => res.json({ id: result.insertId}))
 });
 
 router.put("/api/burgers/:id", (req, res) => {
     let condition = {id: req.params.id};
-    burger.update(req.body, condition).then(result => {
-        if (result.affectedRows === 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
+    burger.update(req.body, condition)
+    .then(result => result.affectedRows === 0 ? res.status(404).end() : res.status(200).end());
 });
 
 router.delete("/api/burgers/:id", (req, res) => {
     let condition = `id = ${req.params.id}`;
-    burger.delete(condition).then(result => {
-        if (result.affectedRows === 0) {
-            return res.status(404).end();
-        }
-        res.status(200).end(); 
-    });
+    burger.delete(condition)
+    .then(result => result.affectedRows === 0 ? res.status(404).end() : res.status(200).end());
 });
 
 module.exports = router;
