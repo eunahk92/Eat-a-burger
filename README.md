@@ -54,7 +54,7 @@ npm i
 ## Usage
 The user can enter any burger to be consumed. The burger will populate on the left until the user clicks "eat", in which it will populate to the right. All burgers are logged in mySQL database and can be added, updated, and removed.
 
-![](public/assets/initial.gif)
+![](public/assets/eataburger.gif)
 
 
 ## Questions
