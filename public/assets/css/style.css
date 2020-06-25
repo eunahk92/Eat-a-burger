@@ -1,22 +1,29 @@
+.jumbotron {
+  color: #5c1822;
+}
+
 li {
   padding: 15px;
   margin-bottom: 5px;
   border: 1px dotted black;
+  font-size: smaller;
 }
 
 #devouredCol li {
-  padding: 5px;
+  padding: 7px;
   background-color: #ccc;
   color: gray;
   font-style: italic;
 }
 
 #devouredCol button {
-  padding: 2px;
+  padding: 0px 2px 0px 2px;
 }
 
-.label {
-font-weight: bold;
+.rounded-lg > button.change-devoured {
+  float: right;
+  height: 25px;
+  margin-left: 5px;
 }
 
 ul {
